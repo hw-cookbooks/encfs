@@ -1,7 +1,7 @@
-unless(node.run_state[:encfs])
-  if(node[:encfs][:passwords][:data_bag][:enabled])
+unless node.run_state[:encfs]
+  if node[:encfs][:passwords][:data_bag][:enabled]
     begin
-      if(node[:encfs][:passwords][:data_bag][:encrypted])
+      if node[:encfs][:passwords][:data_bag][:encrypted]
 
       else
         bag = data_bag_item(
