@@ -42,7 +42,7 @@ action :mount do
   end
 
   execute "EncFS mount <#{args[:visible]}>" do
-    execute "echo '#{args[:password]} | encfs --standard --stdinpass #{args[:crypted]} #{args[:visible]}"
+    command "echo '#{args[:password]} | encfs --standard --stdinpass #{args[:crypted]} #{args[:visible]}"
     not_if "mountpoint #{args[:visible]}"
   end
 
