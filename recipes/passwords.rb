@@ -1,12 +1,12 @@
-unless(node.run_state[:encfs])
-  if(node[:encfs][:passwords][:data_bag][:enabled])
+unless node.run_state[:encfs]
+  if node['encfs']['passwords']['data_bag']['enabled']
     begin
-      if(node[:encfs][:passwords][:data_bag][:encrypted])
+      if node['encfs']['passwords']['data_bag']['encrypted']
 
       else
         bag = data_bag_item(
-          node[:encfs][:passwords][:data_bag][:name],
-          node[:encfs][:data_bag][:item]
+          node['encfs']['passwords']['data_bag']['name'],
+          node['encfs']['data_bag']['item']
         )
       end
       node.run_state[:encfs] = Mash.new(bag.to_hash)
